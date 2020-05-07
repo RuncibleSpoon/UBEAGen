@@ -70,12 +70,13 @@ def cleanup(vpcid):
 
 
 def main(argv=None):
-    print("Starting")
+    print("Starting %s" % time.ctime())
     vpcid = create()
     print("VPC Returned=", vpcid)
     print("Sleeping to allow Prisma Cloud to detect entities")
     time.sleep(SleepTime)
     cleanup(vpcid)
+    print("Ending %s" % time.ctime())
 
 if __name__ == '__main__':
      main()
