@@ -1,6 +1,10 @@
 import boto3
+import time
+
+SleepTime = 300
 ec2 = boto3.resource('ec2')
 ec2client = ec2.meta.client
+
 # Set some variables
 def create():
     # create VPC
@@ -69,6 +73,8 @@ def main(argv=None):
     print("Starting")
     vpcid = create()
     print("VPC Returned=", vpcid)
+    print("Sleeping to allow Prisma Cloud to detect entities")
+    time.sleep(SleepTime)
     cleanup(vpcid)
 
 if __name__ == '__main__':
